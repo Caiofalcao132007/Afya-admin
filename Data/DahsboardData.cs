@@ -45,11 +45,11 @@ public static class DashboardData
         new("Ana Martins", "publicou um novo relatório", "há 45 minutos", Icons.Material.Filled.Description, Color.Secondary),
         new("João Silva", "atualizou as permissões do sistema", "há 1 hora", Icons.Material.Filled.Settings, Color.Warning),
     };
-    public static readonly List<ProjetoRecente> ProjetosRecentes = new()
+     public static readonly List<ProjetoRecente> ProjetosRecentes = new()
     {
-        new("Portal Institucional", Icons.Material.Outlined.DesktopWindows, Color.Primary, "TechCorp", "Mariana Souza", "Em andamento", Color.Inf),
-        new("Aplicativo Mobile", Icons.Material.Outlined.PhoneIphone, Color.Secondary, "Nova Digital", "Carlos Lima", "Em revisão", Color.Warning),
-        new("Migração Cloud", Icons.Material.Outlined.Cloud, Color.Success, "CloudSystems", "Ana Martins", "Concluído", Color.Success, 100, "20 S),
+        new("Portal Institucional", Icons.Material.Outlined.DesktopWindows, Color.Primary, "TechCorp", "Mariana Souza", "Em andamento", Color.Info, 65, "30 Set"),
+        new("Aplicativo Mobile", Icons.Material.Outlined.PhoneIphone, Color.Secondary, "Nova Digital", "Carlos Lima", "Em revisão", Color.Warning, 80, "25 Set"),
+        new("Migração Cloud", Icons.Material.Outlined.Cloud, Color.Success, "CloudSystems", "Ana Martins", "Concluído", Color.Success, 100, "20 Set"),
         new("Sistema ERP", Icons.Material.Outlined.Storage, Color.Warning, "Alpha Group", "João Silva", "Em andamento", Color.Info, 48, "15 Out"),
     };
 }
