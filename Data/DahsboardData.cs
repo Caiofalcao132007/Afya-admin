@@ -20,6 +20,37 @@ public static class DashboardData
         new("Projetos Ativos", "27", "-2,4%", false, Icons.Material.Filled.Folder, Color.Warning, "#F97316",
             new double[] { 12, 15, 19, 16, 18, 15, 17, 14, 15, 12 }),
     };
+    public static readonly Dictionary<string, List<Kpi>> KpisPorPeriodo = new()
+    {
+        ["Últimos 7 dias"] = new()
+        {
+            new("Receita", "R$ 58.200", "+4,1%", true, Icons.Material.Filled.AttachMoney, Color.Success, "#10B981",
+                new double[] { 12, 13, 12, 15, 14, 16, 15, 17, 18, 19 }),
+            new("Usuários Ativos", "9.430", "+2,7%", true, Icons.Material.Filled.Groups, Color.Secondary, "#7C3AED",
+                new double[] { 10, 11, 10, 12, 11, 13, 12, 14, 13, 15 }),
+            new("Novos Clientes", "92", "+5,3%", true, Icons.Material.Filled.PeopleAlt, Color.Info, "#3B82F6",
+                new double[] { 5, 7, 6, 8, 7, 9, 8, 10, 9, 11 }),
+            new("Projetos Ativos", "27", "-0,8%", false, Icons.Material.Filled.Folder, Color.Warning, "#F97316",
+                new double[] { 14, 15, 15, 14, 15, 14, 14, 13, 14, 13 }),
+        },
+        ["Últimos 30 dias"] = Kpis,
+        ["Últimos 90 dias"] = new()
+        {
+            new("Receita", "R$ 712.900", "+18,9%", true, Icons.Material.Filled.AttachMoney, Color.Success, "#10B981",
+                new double[] { 8, 12, 15, 14, 20, 24, 27, 31, 36, 42 }),
+            new("Usuários Ativos", "15.310", "+11,6%", true, Icons.Material.Filled.Groups, Color.Secondary, "#7C3AED",
+                new double[] { 9, 10, 13, 15, 14, 18, 20, 22, 25, 27 }),
+            new("Novos Clientes", "1.047", "+22,4%", true, Icons.Material.Filled.PeopleAlt, Color.Info, "#3B82F6",
+                new double[] { 4, 7, 9, 12, 15, 14, 19, 22, 26, 30 }),
+            new("Projetos Ativos", "31", "+3,3%", true, Icons.Material.Filled.Folder, Color.Warning, "#F97316",
+                new double[] { 10, 11, 13, 12, 14, 15, 14, 16, 17, 18 }),
+        },
+    };
+
+    // "Personalizado" (e qualquer período sem dados) usa os dados de 30 dias
+    public static List<Kpi> KpisDoPeriodo(string periodo) =>
+        KpisPorPeriodo.TryGetValue(periodo, out var kpis) ? kpis : Kpis;
+
     public static readonly string[] Meses = { "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set" };
     public static readonly double[] ReceitaMensal = { 70000, 117000, 112000, 135000, 165000, 168000, 182000, 212000, 248500 };
     public static readonly double[] MetaMensal = { 25000, 45000, 52000, 68000, 95000, 97000, 118000, 152000, 185000 };
@@ -45,7 +76,7 @@ public static class DashboardData
         new("Ana Martins", "publicou um novo relatório", "há 45 minutos", Icons.Material.Filled.Description, Color.Secondary),
         new("João Silva", "atualizou as permissões do sistema", "há 1 hora", Icons.Material.Filled.Settings, Color.Warning),
     };
-     public static readonly List<ProjetoRecente> ProjetosRecentes = new()
+    public static readonly List<ProjetoRecente> ProjetosRecentes = new()
     {
         new("Portal Institucional", Icons.Material.Outlined.DesktopWindows, Color.Primary, "TechCorp", "Mariana Souza", "Em andamento", Color.Info, 65, "30 Set"),
         new("Aplicativo Mobile", Icons.Material.Outlined.PhoneIphone, Color.Secondary, "Nova Digital", "Carlos Lima", "Em revisão", Color.Warning, 80, "25 Set"),
