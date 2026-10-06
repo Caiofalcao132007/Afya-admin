@@ -44,19 +44,19 @@ dotnet watch
 ## Telas
 
 ### Tema claro
-![Dashboard — tema claro](wwwroot\prints\Captura de tela 2026-10-05 184959.png)
+<img src="wwwroot/prints/Captura%20de%20tela%202026-10-05%20184959.png" alt="Dashboard — tema claro" width="900">
 
 ### Tema escuro
-![Dashboard — tema escuro](wwwroot\prints\Captura de tela 2026-10-05 185013.png)
+<img src="wwwroot/prints/Captura%20de%20tela%202026-10-05%20185013.png" alt="Dashboard — tema escuro" width="900">
 
 ### Versão mobile
-![Dashboard — celular](wwwroot\prints\Captura de tela 2026-10-05 185048.png)
+<img src="wwwroot/prints/Captura%20de%20tela%202026-10-05%20185048.png" alt="Dashboard — celular" width="400">
 
 ### HTML gerado (DevTools)
-![Inspeção do HTML no DevTools](wwwroot\prints\Captura de tela 2026-10-05 185121.png)
-![Inspeção do HTML no DevTools](wwwroot\prints\Captura de tela 2026-10-05 185309.png)
-![Inspeção do HTML no DevTools](wwwroot\prints\Captura de tela 2026-10-05 185318.png)
-![Inspeção do HTML no DevTools](wwwroot\prints\Captura de tela 2026-10-05 185327.png)
+<img src="wwwroot/prints/Captura%20de%20tela%202026-10-05%20185121.png" alt="Inspeção do HTML no DevTools" width="900">
+<img src="wwwroot/prints/Captura%20de%20tela%202026-10-05%20185309.png" alt="Inspeção do HTML no DevTools" width="900">
+<img src="wwwroot/prints/Captura%20de%20tela%202026-10-05%20185318.png" alt="Inspeção do HTML no DevTools" width="900">
+<img src="wwwroot/prints/Captura%20de%20tela%202026-10-05%20185327.png" alt="Inspeção do HTML no DevTools" width="900">
 
 
 Inspecionei o card de KPI "Receita" e o botão "Novo Projeto". O `<MudPaper>` do card virou uma `<div>` com as classes `mud-paper` e `mud-elevation-1` (do parâmetro `Elevation="1"`) e, junto delas, a `pa-4` que escrevi em `Class="pa-4"`: o MudBlazor soma a minha classe às que ele mesmo gera. O `<MudStack>` virou uma `<div>` com a classe `mud-stack`, e o `<MudButton>` virou um `<button>` com classes `mud-button`. O mesmo acontece com o `<MudDivider Class="mx-3 my-3">` do layout, que aparece como `<hr class="mud-divider ... mx-3 my-3">`. (Confira este texto contra o seu print antes de enviar.)
