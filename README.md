@@ -173,11 +173,24 @@ O Component é uma parte reutilizável da interface, que pode ser usada dentro d
 
 
 
-## Melhorias futuras e desafios (opcional)
+## Melhorias futuras (opcional)
 
+Cumpri o desafio número 3 da seção 20 do tutorial: **Período funcional**. O objetivo era fazer a troca de período no `SeletorPeriodo` alterar os valores dos KPIs, usando um dicionário de dados por período em `DashboardData`.
+
+Como funciona:
+
+- Em `Data/DashboardData.cs`, criei o dicionário `KpisPorPeriodo`, do tipo `Dictionary<string, List<Kpi>>`. A chave é o nome do período ("Últimos 7 dias", "Últimos 30 dias" e "Últimos 90 dias") e o valor é a lista de KPIs daquele período, com valor, variação e dados do mini gráfico. O período de 30 dias reaproveita a lista `Kpis` que já existia.
+- Ainda no `DashboardData.cs`, criei o método `KpisDoPeriodo(string periodo)`, que procura o período no dicionário com `TryGetValue`. Se não encontra, como no caso de "Personalizado", devolve os dados de 30 dias.
+- Em `Pages/Dashboard.razor`, o `@foreach` dos cards passou de `DashboardData.Kpis` para `DashboardData.KpisDoPeriodo(_periodo)`.
+- O `SeletorPeriodo` e o `KpiCard` não precisaram mudar. O `SeletorPeriodo` usa `@bind-Valor="_periodo"`: quando escolho uma opção, ele dispara o `ValorChanged` e a página atualiza o `_periodo`. Com isso a página é renderizada de novo e o `@foreach` busca a lista do novo período. Como o `KpiCard` monta o gráfico no `OnParametersSet`, o mini gráfico também se atualiza.
+
+Os valores de cada período são fictícios, como o resto do dashboard. O gráfico de Receita x Meta e os demais blocos ainda não mudam com o período.
 
 O que eu implementaria a seguir:
 
 - Criar as páginas do menu que hoje levam ao 404 (Projetos, Analytics, Clientes, Financeiro, Relatórios, Administração, Usuários, Permissões, Integrações, Configurações e Ajuda), começando por Projetos e reaproveitando `CabecalhoPagina` e `DashboardCard`.
 - Fazer o breadcrumb depender da página atual com `NavigationManager`, já que hoje ele sempre mostra "Home / Dashboard".
-- Continuar melhorando o mobile e testar em celular real.
+- Fazer os outros blocos (gráficos, atividades e tabela) também responderem ao período.
+- Fazer o campo "Pesquisar..." filtrar a tabela de Projetos Recentes.
+- Salvar a preferência de tema claro/escuro no `localStorage` com `IJSRuntime` e detectar o tema do sistema na primeira visita.
+- Mover os dados fictícios para um serviço (`IDashboardService`), para depois trocar por uma API real.
